@@ -18,7 +18,7 @@ final class IdentityServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/identity.php', 'identity');
-        $this->app->singleton(RegistrationPolicy::class, fn (): ConfiguredRegistrationPolicy => new ConfiguredRegistrationPolicy((string) config('identity.registration', 'open')));
+        $this->app->singleton(RegistrationPolicy::class, fn () => new ConfiguredRegistrationPolicy((string) config('identity.registration', 'open')));
         $this->app->bind(InvitationValidator::class, RejectingInvitationValidator::class);
     }
 
